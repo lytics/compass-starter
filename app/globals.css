@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+  @apply bg-white dark:bg-black !font-montserrat
+}
+
+.single-col {
+  min-height: 90vh;
+}
+
+@media (min-width:640px)  {
+
+  .card-styled:nth-child(2n-2){
+    position: relative;
+    top: 94px;
+  }
+}
+
+#pagination-scroll-anchor:target {
+  scroll-margin-top: 85px;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+      @apply text-black dark:text-white font-montserrat font-bold text-black
+  }
+  h1 {
+    @apply text-[52px] leading-[54px]
+  }
+  h2 {
+    @apply text-[44px] leading-[45px]
+  }
+  h3 {
+    @apply text-[24px] leading-[26px]
+  }
+  p {
+    @apply font-normal text-black dark:text-white !leading-6 font-montserrat
+  }
+  span {
+    @apply !font-montserrat
+  }
+  button {
+    font-family: Montserrat
+  }
+}
+
+@layer components {
+  .container {
+    @apply relative max-w-7xl mx-auto;
+  }
+  .btnPrimary {
+    @apply bg-[#424656] hover:bg-[#A1AACE] font-bold text-white py-2 px-4 border hover:border-[#A1AACE] rounded;
+  }
+  .btnSecondary {
+    @apply bg-[#A1AACE] hover:bg-transparent font-bold text-white hover:text-[#424656] py-2 px-4 border-2 hover:border-[#424656] rounded;
+  }
+  .btnTertiary {
+    @apply block w-full rounded-md border border-transparent bg-black !text-white text-base font-semibold text-gray-100 hover:opacity-80
+  }
+  .text h1 {
+    @apply xl:mt-0 mt-4 text-4xl font-bold tracking-tight text-gray-900 sm:mt-0 sm:text-6xl dark:text-white
+  }
+  .text h2 {
+    @apply text-[44px] font-bold dark:text-white py-3
+  }
+  .text h3 {
+    @apply font-bold text-2xl leading-[26px] text-black dark:text-white py-4
+  }
+  .text h5 {
+    @apply font-bold text-purple text-lg leading-7
+  }  
+  .text h6{
+    @apply text-lg text-[#5B6B86] font-normal leading-7 dark:text-white py-2
+  }
+  .text ul { @apply list-disc py-1 px-6 }
+
+  .text ol { @apply list-decimal py-1 px-6 }
+
+  .text li {
+    @apply text-lg text-[16px] text-black/80 dark:text-white leading-7 py-1 font-light
+  }
+
+  .text li strong {
+    @apply font-bold
+  }
+
+  .text p { @apply py-1 font-normal leading-6 text-black text-base}
+
+  p { @apply py-1 font-normal leading-6 text-black }
+
+  .text a { @apply text-[16px] text-purple hover:underline font-semibold}
+
+  .text img { @apply w-full my-8 mx-auto}
+
+  .card-title {
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-content {
+    display: -webkit-box;
+    max-width: 100%;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+
+  .built-by p {
+    @apply text-gray-700 font-montserrat !font-bold;
+  }
+
+  .built-by p > a {
+    @apply hover:underline text-purple outline-none ;
+  }
+}
+
+:root {
+  --added-item-color: rgba(0, 255, 0);
+  --removed-item-color: rgba(255, 0, 0);
+}
+
+picture .cs-compare__void--added, img.cs-compare__void--added {
+  border: 3px solid var(--added-item-color);
+}
+
+picture .cs-compare__void--removed, img.cs-compare__void--removed {
+  border: 3px solid var(--removed-item-color);
+}
