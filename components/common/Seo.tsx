@@ -42,6 +42,7 @@ jstag.pageView();`
             document.head.removeChild(script)
         }
     }, [])
+    return <></>
 }
 
 const SEO: React.FC<Page.SeoProps> = (props: Page.SeoProps) => {
