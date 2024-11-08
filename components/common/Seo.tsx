@@ -27,6 +27,12 @@ jstag.init({
         dataLayerPull: {
             disabled: true
         }
+    },
+    contentStack: {
+        entityPush: {
+            disabled: false,
+            personalizeProjectId: '671ff45f9513ea7dd1e6ba8d',
+        }
     }
 });
 
