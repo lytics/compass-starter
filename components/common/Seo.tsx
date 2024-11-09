@@ -32,6 +32,7 @@ jstag.init({
         entityPush: {
             disabled: false,
             personalizeProjectId: '671ff45f9513ea7dd1e6ba8d',
+            attributes: ['user.score_intensity', 'user.score_maturity'],
         }
     }
 });
