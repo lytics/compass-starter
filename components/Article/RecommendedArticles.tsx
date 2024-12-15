@@ -4,7 +4,7 @@ import { CardCollection } from '../CardCollection'
 
 const RecommendedArticles:React.FC<RecommendedArticlesType> = (props:RecommendedArticlesType) => {
 
-    const { recommended_articles, cards, affinities } = props
+    const { recommended_articles, cards } = props
     const { heading, sub_heading, $ } = {...recommended_articles} //related_article_tags
 
     // sub_heading2 = (sub_heading || "") + (affinities?.join(", "));

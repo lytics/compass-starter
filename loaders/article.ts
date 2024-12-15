@@ -1,5 +1,9 @@
 import _ from 'lodash'
-import { getEntries, getRecommendedEntries, getEntryByUrl } from '@/services/contentstack'
+import {
+    getEntries,
+    getEntryByUrl,
+    getRecommendedEntries
+} from '@/services/contentstack'
 import { Taxonomy } from '@/types/pages'
 import { articleJSONRtePathIncludes } from './loaders.helper'
 

@@ -4,7 +4,7 @@ import { isNull } from 'lodash'
 import { getArticle, getArticleListingPageByTaxonomy, getArticles, getRecommendedArticles } from '@/loaders'
 import { RenderComponents } from '@/components'
 import { Page } from '@/types'
-import { ArticleCover, NotFoundComponent, PageWrapper, RelatedArticles, RecommendedArticles, RelatedLinks } from '@/components'
+import { ArticleCover, NotFoundComponent, PageWrapper, RecommendedArticles, RelatedArticles, RelatedLinks } from '@/components'
 import { ImageCardItem } from '@/types/components'
 import { onEntryChange } from '@/config'
 import { isDataInLiveEdit } from '@/utils'
@@ -94,8 +94,12 @@ export default function Article () {
         })
     }) as ImageCardItem[] | []
 
-    const relatedArticleCards = related_cards && related_cards.splice(0, (data?.related_articles?.number_of_articles && data?.related_articles?.number_of_articles <= 6) ? related_articles?.number_of_articles : 6)
-    const recommendedArticleCards = recommended_cards && recommended_cards.splice(0, (data?.recommended_articles?.number_of_recommendations && data?.recommended_articles?.number_of_recommendations <= 6) ? recommended_articles?.number_of_recommendations : 6)
+    const relatedArticleCards = related_cards
+        && related_cards.splice(0, (data?.related_articles?.number_of_articles
+        && data?.related_articles?.number_of_articles <= 6) ? related_articles?.number_of_articles : 6)
+    const recommendedArticleCards = recommended_cards
+        && recommended_cards.splice(0, (data?.recommended_articles?.number_of_recommendations
+        && data?.recommended_articles?.number_of_recommendations <= 6) ? recommended_articles?.number_of_recommendations : 6)
 
     return (
         data ? <>

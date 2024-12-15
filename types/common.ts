@@ -1,4 +1,4 @@
-import { related_articles, related_links } from './components'
+import { recommended_articles, related_articles, related_links } from './components'
 import { Taxonomy } from './pages/common'
 
 export type MappedPreview<T> = {

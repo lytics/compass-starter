@@ -32,3 +32,13 @@
     background: linear-gradient(82.38deg, rgb(255, 77, 157) -8.82%, rgb(157, 112, 253) 39.29%, rgb(100, 143, 255) 103.06%);
     mask: linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box exclude, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px);
 }
+
+.pf-widget-slideout {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .5);
+    border-radius: 12px !important;
+}
+
+.pf-widget-slideout.pf-position-bottom-left {
+    bottom: 1em !important;
+    left: 1em !important;
+}
