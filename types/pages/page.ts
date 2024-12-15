@@ -14,6 +14,7 @@ export type ArticlePage = {
   entry: PageEntry & Article
   locale?:string
   articles?: Article[] | []
+  recommended_articles?: Article[] | []
   $?: MappedPreview<ArticlePage>
 }
 export type ArticleListingPage = {

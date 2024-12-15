@@ -39,6 +39,8 @@ export interface CommonSystemInfo {
   show_related_articles?: boolean
   related_articles?: related_articles
   related_links?: related_links
+  show_recommended_articles?: boolean
+  recommended_articles?: recommended_articles
   updated_at?: Date
   updated_by?: string
 }

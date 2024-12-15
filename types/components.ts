@@ -127,6 +127,7 @@ export interface CardCollectionHeader {
 export interface CardCollection {
   $?: MappedPreview<CardCollection>;
   id?: string;
+  className?: string;
   cards?: ImageCardItem[] | [];
   header?: CardCollectionHeader;
   totalCount?: number;
@@ -185,6 +186,22 @@ export interface related_articles {
   related_article_tags?:string[]
   $?: MappedPreview<related_articles>
 }
+
+export interface recommended_articles {
+  heading?:string
+  sub_heading?:string
+  lytics_content_collection?:string
+  rank_method?:string
+  number_of_recommendations?:number
+  related_article_tags?:string[]
+  $?: MappedPreview<related_articles>
+}
+
+export type RecommendedArticles = {
+	recommended_articles?: recommended_articles;
+	cards?: ImageCardItem[] | [];
+  affinities?: string[];
+};
 
 export interface related_links {
   text?: string

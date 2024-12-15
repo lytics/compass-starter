@@ -13,3 +13,22 @@
 .slick-list {
     @apply !pl-6 xl:!pl-0
 }
+
+.poweredByLytics {
+    position: relative;
+    background-color: #fff;
+    margin: 1em;
+    padding: 2em 0;
+}
+
+.poweredByLytics::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    padding: 8px;
+    background: linear-gradient(82.38deg, rgb(255, 77, 157) -8.82%, rgb(157, 112, 253) 39.29%, rgb(100, 143, 255) 103.06%);
+    mask: linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px) content-box exclude, linear-gradient(rgb(255, 255, 255) 0px, rgb(255, 255, 255) 0px);
+}

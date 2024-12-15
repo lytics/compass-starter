@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import { getRecommendations, lyticsUrlToEntryUrl } from './lytics'
 import { addEditableTags, jsonToHTML } from '@contentstack/utils'
 import { isEditButtonsEnabled, Stack } from '@/config'
 
@@ -12,8 +13,9 @@ import { isEditButtonsEnabled, Stack } from '@/config'
   * @param {* containedInQuery} query
   *
   */
+
 export const getEntries = async (contentTypeUid, locale, referenceFieldPath, jsonRtePath, query, limit=0) => {
-    try {    
+    try {
         let result    
         if(!Stack) {
             throw new Error('===== No stack initialization found====== \n check environment variables: \
@@ -63,6 +65,49 @@ export const getEntries = async (contentTypeUid, locale, referenceFieldPath, jso
             const data = result[0]
             return data
         }
+    }
+    catch (error) {
+        if (error?.error_message) throw new Error(JSON.stringify(error))
+        else throw error
+    }
+}
+
+
+/**
+  *
+  * fetches all the (lytics recommended) entries from specific content-type
+  * @param {* content-type uid} contentTypeUid
+  * @param {* locale} locale
+  * @param {* reference field name} referenceFieldPath
+  * @param {* Json RTE path} jsonRtePath
+  * @param {* containedInQuery} query
+  *
+  */
+export const getRecommendedEntries = async (contentTypeUid, locale, referenceFieldPath, jsonRtePath, query, limit=0) => {
+    try {    
+        if(!Stack) {
+            throw new Error('===== No stack initialization found====== \n check environment variables: \
+            CONTENTSTACK_API_KEY, CONTENTSTACK_DELIVERY_TOKEN, CONTENTSTACK_PREVIEW_TOKEN, CONTENTSTACK_PREVIEW_HOST, CONTENTSTACK_ENVIRONMENT')
+        }
+
+        // try to make a recommendation call here
+        let recs = await getRecommendations();
+
+        // get the URLs so we can order all entries by their recommended order
+        let urls = recs.data.map(item => lyticsUrlToEntryUrl(item.url))
+
+        const entries = await getEntries(contentTypeUid, locale, referenceFieldPath, jsonRtePath, query, limit)
+
+        let result = entries.sort((a, b) => {
+            const indexA = urls.indexOf(a.url) ?? Infinity;
+            const indexB = urls.indexOf(b.url) ?? Infinity;
+
+            const valA = indexA === -1 ? Infinity : indexA;
+            const valB = indexB === -1 ? Infinity : indexB;
+            return valA - valB;
+        });
+        console.log("result!", result);
+        return result;
     }
     catch (error) {
         if (error?.error_message) throw new Error(JSON.stringify(error))
