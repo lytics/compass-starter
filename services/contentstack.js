@@ -1,7 +1,7 @@
 import _ from 'lodash'
+import { addEditableTags, jsonToHTML } from '@contentstack/utils'
 import { isEditButtonsEnabled, Stack } from '@/config'
 import { getRecommendations, lyticsUrlToEntryUrl } from './lytics'
-import { addEditableTags, jsonToHTML } from '@contentstack/utils'
 
 /**
   *
@@ -95,8 +95,7 @@ export const getRecommendedEntries = async (contentTypeUid, locale, referenceFie
 
         // get the URLs so we can order all entries by their recommended order
         let urls = recs.data.map(item => lyticsUrlToEntryUrl(item.url))
-
-        const entries = await getEntries(contentTypeUid, locale, referenceFieldPath, jsonRtePath, query, limit)
+        const entries = await getEntries(contentTypeUid, locale, referenceFieldPath, jsonRtePath, query, limit + 100)
 
         let result = entries.sort((a, b) => {
             const indexA = urls.indexOf(a.url) ?? Infinity
@@ -106,7 +105,8 @@ export const getRecommendedEntries = async (contentTypeUid, locale, referenceFie
             const valB = indexB === -1 ? Infinity : indexB
             return valA - valB
         })
-        return result
+
+        return result.slice(0, limit)
     }
     catch (error) {
         if (error?.error_message) throw new Error(JSON.stringify(error))
