@@ -9,7 +9,7 @@ const lyticsAccountId = '735f0433cdd95e0070ad26650e8d2381'
 export const getRecommendations = async (collectionId) => {
 // /api/content/recommend/:acctid/user/:fieldName/:fieldVal
     collectionId = collectionId || lyticsGlobalCollectionId
-    const url = 'https://api.lytics.io/api/content/recommend/' + lyticsAccountId + '/user/_uids/' + getLyticsCookie() + '?limit=5&contentsegment=' + collectionId
+    const url = 'https://api.lytics.io/api/content/recommend/' + lyticsAccountId + '/user/_uids/' + getLyticsCookie() + '?limit=100&contentsegment=' + collectionId
     const headers = {
         'Content-Type': 'application/json'
     }
